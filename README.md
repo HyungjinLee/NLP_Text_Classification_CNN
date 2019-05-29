@@ -3,8 +3,9 @@
 
 ## 1. Model Structure
 ![Model](http://www.wildml.com/wp-content/uploads/2015/11/Screen-Shot-2015-11-06-at-8.03.47-AM.png)
+      출처 : http://www.wildml.com/2015/12/implementing-a-cnn-for-text-classification-in-tensorflow/
 
-1. 정답 레이블이 있는 네이버 영화 리뷰 데이터 15만건([박은정님 제공](https://github.com/e9t/nsmc))에 대해서 **품사 태깅**
+1. 정답 레이블이 있는 '로튼 토마토 영화 리뷰' 데이터 75249건((https://github.com/e9t/nsmc))에 대해서 **품사 태깅**
 
 2. 품사 태깅한 단어들에 대해 **Word2Vec**을 이용해 학습시킨 임베딩 벡터로 변환
 
@@ -12,17 +13,17 @@
 
 ## 2. Requirement
 
-- [nltk](http://konlpy.org/en/v0.4.4/)
+- [nltk](https://datascienceschool.net/view-notebook/118731eec74b4ad3bdd2f89bab077e1b/)
 - [tensorflow 1.13.1](https://www.tensorflow.org/)
-- [gensim](https://radimrehurek.com/gensim/)
 
 ## 3. Data Sets
 
 - Training data : 영화 리뷰 데이터 (-) 36420 [rt-polarity.neg](https://github.com/HyungjinLee/NLP_Text_Classification/tree/master/rt-polaritydata)
                   영화 리뷰 데이터 (+) 38829 [rt-polarity.pos]
 (https://github.com/HyungjinLee/NLP_Text_Classification/tree/master/rt-polaritydata)
+                  총 리뷰 데이터 = 75249 문장
 
-- Test data : 영화 리뷰 데이터 5만건 [ratings_test.txt](https://github.com/e9t/nsmc)
+- Test data : Kaggle 리뷰 데이터 말뭉치 5만건 [ratings_test.txt](https://github.com/e9t/nsmc)
 
 ## 4. 학습
 
