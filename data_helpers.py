@@ -66,12 +66,11 @@ def load_data_and_labels_kaggle(test_data_file):
     #print(test_examples["review"][:10])
     # preprocessing
     sentences = []
-    count = 0
     for review in test_examples["review"]:
-        sentences.append(KaggleWord2VecUtility.review_to_corpus(review, remove_stopwords=True))
-        
-    print("preprocessing complete")
+        tmpstr = KaggleWord2VecUtility.review_to_corpus(review, remove_stopwords=False)
+        sentences.append(tmpstr)
     
+    print("preprocessing complete")
     return [sentences, y]
 
 def batch_iter(data, batch_size, num_epochs, shuffle=True):
