@@ -13,7 +13,7 @@
 3. 단어 벡터들을 **BiLSTM**에 넣어서 양쪽 끝 state들에 대해서 **fully connected layer**와 **Softmax**함수를 이용해 분류
 
 ## 2. Requirement
-
+- [BeautifulSoup 4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 - [nltk](https://datascienceschool.net/view-notebook/118731eec74b4ad3bdd2f89bab077e1b/)
 - [tensorflow 1.13.1](https://www.tensorflow.org/)
 
@@ -24,7 +24,7 @@
 (https://github.com/HyungjinLee/NLP_Text_Classification/tree/master/rt-polaritydata)
                   총 리뷰 데이터 = 75249 문장
 
-- Test data : Kaggle 리뷰 데이터 말뭉치 5만건 [ratings_test.txt](https://github.com/e9t/nsmc)
+- Test data : Kaggle 리뷰 데이터 말뭉치 5만건 (https://www.kaggle.com/iarunava/imdb-movie-reviews-dataset)
 
 ## 4. 학습
 
@@ -56,4 +56,4 @@
 ![alt text](https://github.com/MSWon/Sentimental-Analysis/blob/master/pic/pic_5.png "Result")
 
 
-- Grade_review.py를 통해 직접 입력한 문장에 성능 확인
+- eval.py에서 training option 설정 : True인 경우 new testset을 학습, False인 경우 직접 입력한 문장에 성능 확인
