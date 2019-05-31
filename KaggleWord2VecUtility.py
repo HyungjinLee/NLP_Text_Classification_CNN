@@ -8,6 +8,7 @@ from bs4 import BeautifulSoup
 from nltk.corpus import stopwords
 from nltk.stem.snowball import SnowballStemmer
 from nltk.tokenize import word_tokenize
+from nltk.tokenize import sent_tokenize
 from multiprocessing import Pool
 
 class KaggleWord2VecUtility(object):
@@ -15,7 +16,7 @@ class KaggleWord2VecUtility(object):
     @staticmethod
     def review_to_wordlist(review, remove_stopwords=False):
         # 1. HTML 제거
-        review_text = BeautifulSoup(review, "html.parser").get_text()   
+        review_text = BeautifulSoup(review, "lxml").get_text()   
         # 2. 특수문자를 공백으로 바꿔줌
         review_text = re.sub('[^a-zA-Z]', ' ', review_text)
         # 3. 소문자로 변환 후 나눈다.
@@ -47,19 +48,21 @@ class KaggleWord2VecUtility(object):
         저장된 pickle을 다시 읽으면 변수에 연결되었던
         모든 레퍼런스가 계속 참조 상태를 유지한다.
         """
-        tokenizer = nltk.data.load('tokenizers/punkt/english.pickle')
-        # 1. nltk tokenizer를 사용해서 단어로 토큰화 하고 공백 등을 제거한다.
-        raw_sentences = tokenizer.tokenize(review.strip())
+        
+        # 1. nltk tokenizer를 사용해서 문장으로 토큰화 하고 공백 등을 제거한다.
+        raw_sentences = sent_tokenize(review.strip())
+        #print("raw_sentences =", raw_sentences)
         # 2. 각 문장을 순회한다.
         sentences = []
         for raw_sentence in raw_sentences:
             # 비어있다면 skip
             if len(raw_sentence) > 0:
                 # 태그제거, 알파벳문자가 아닌 것은 공백으로 치환, 불용어제거
-                sentences.append(\
-                    KaggleWord2VecUtility.review_to_wordlist(\
-                    raw_sentence, remove_stopwords))
-        return sentences
+                #sentences.append(\
+                #    KaggleWord2VecUtility.review_to_wordlist(\
+                #    raw_sentence, remove_stopwords))
+                raw_sentence = re.sub('[^\\-a-zA-Z]', ' ', raw_sentence)
+        return raw_sentences
     
     @staticmethod
     def review_to_corpus( review, remove_stopwords=False ):
@@ -70,8 +73,8 @@ class KaggleWord2VecUtility(object):
         저장된 pickle을 다시 읽으면 변수에 연결되었던
         모든 레퍼런스가 계속 참조 상태를 유지한다.
         """
-        step1 = BeautifulSoup(review, "html5lib") #html 태그 제거
-        step2 = re.sub('[^a-zA-z]', ' ', step1.get_text()) # 소문자와 대문자가 아닌 것은 공백으로 대체
+        step1 = BeautifulSoup(review, "lxml") #html 태그 제거
+        step2 = re.sub('[^a-zA-z.]', ' ', step1.get_text()) # 소문자와 대문자가 아닌 것은 공백으로 대체
         step3 = step2.lower() #모두 소문자로 변환
         return step3
 

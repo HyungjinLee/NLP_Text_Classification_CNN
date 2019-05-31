@@ -18,17 +18,17 @@ tf.app.flags.DEFINE_string('f', '', 'kernel')
 
 # Data Parameters
 #tf.flags.DEFINE_string("positive_data_file", "rt-polaritydata/rt-polarity.pos", "Data source for the positive data.")
-tf.flags.DEFINE_string("positive_data_file", "rt-polaritydata/test.pos", "Data source for the positive data.")
+tf.flags.DEFINE_string("positive_data_file", "rt-polaritydata/rt-polarity-prev.pos", "Data source for the positive data.")
 
 
 #tf.flags.DEFINE_string("negative_data_file", "rt-polaritydata/rt-polarity.neg", "Data source for the negative data.")
-tf.flags.DEFINE_string("negative_data_file", "rt-polaritydata/test.neg", "Data source for the negative data.")
+tf.flags.DEFINE_string("negative_data_file", "rt-polaritydata/rt-polarity-prev.neg", "Data source for the negative data.")
 
 
 # Eval Parameters
 tf.flags.DEFINE_integer("batch_size", 64, "Batch Size (default: 64)")
-tf.flags.DEFINE_string("checkpoint_dir", "runs/1558977711/checkpoints", "Checkpoint directory from training run")
-tf.flags.DEFINE_boolean("eval_train", True, "Evaluate on all training data")
+tf.flags.DEFINE_string("checkpoint_dir", "runs/1559222525/checkpoints", "Checkpoint directory from training run")
+tf.flags.DEFINE_boolean("eval_train", False, "Evaluate on all training data")
 
 # Misc Parameters
 tf.flags.DEFINE_boolean("allow_soft_placement", True, "Allow device soft device placement")
@@ -56,12 +56,15 @@ else:
 # preprocessing
 for x in x_raw:
     x = KaggleWord2VecUtility.review_to_wordlist(x)
-    print(x)
     
-    # Map data into vocabulary
+# Map data into vocabulary
 vocab_path = os.path.join(FLAGS.checkpoint_dir, "..", "vocab")
 vocab_processor = learn.preprocessing.VocabularyProcessor.restore(vocab_path)
+
+print(x_raw)
 x_test = np.array(list(vocab_processor.transform(x_raw)))
+print( "x_test : ", x_test)
+print(x_test.shape)
 
 print("\nEvaluating...\n")
 
@@ -98,8 +101,15 @@ with graph.as_default():
         for x_test_batch in batches:
             print("test_batch : ", x_test_batch)
             batch_predictions = sess.run(predictions, {input_x: x_test_batch, dropout_keep_prob: 1.0})
+            print("batch_predictions : ", batch_predictions)
+            print(batch_predictions.shape)
+            #print(type(x_test_batch))
+            
+            print(x_test_batch.shape)
+            #print(x_test_batch)
+            
             all_predictions = np.concatenate([all_predictions, batch_predictions])     
-            print(all_predictions.shape)
+            #print(all_predictions.shape)
 if FLAGS.eval_train is False:
     answer = all_predictions[0]
     print("answer : ", answer, "\n")

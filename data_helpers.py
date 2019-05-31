@@ -66,12 +66,40 @@ def load_data_and_labels_kaggle(test_data_file):
     #print(test_examples["review"][:10])
     # preprocessing
     sentences = []
-    count = 0
     for review in test_examples["review"]:
-        sentences.append(KaggleWord2VecUtility.review_to_corpus(review, remove_stopwords=True))
-        
-    print("preprocessing complete")
+        tmpstr = KaggleWord2VecUtility.review_to_corpus(review, remove_stopwords=False)
+        sentences.append(tmpstr)
     
+    print("preprocessing complete")
+    return [sentences, y]
+
+def load_data_and_labels_kaggle2(test_data_file):
+    """
+    Loads MR polarity data from files, splits the data into words and generates labels.
+    Returns split sentences and labels.
+    """
+    y=[]
+    # Load data from files
+    training_examples = pd.read_csv(test_data_file, 
+                    header=0, delimiter='\t', quoting=3)
+    # Generate labels
+    for x in training_examples["Sentiment"]:
+        if x == 1 : #positive
+            test_labels = [1]
+        else : #negative
+            test_labels = [0]
+        y = np.concatenate([y,test_labels], 0)
+    print(y)
+    print(y.shape)
+    print("sentiment complete")
+    #print(test_examples["review"][:10])
+    # preprocessing
+    sentences = []
+    for review in test_examples["review"]:
+        tmpstr = KaggleWord2VecUtility.review_to_corpus(review, remove_stopwords=False)
+        sentences.append(tmpstr)
+    
+    print("preprocessing complete")
     return [sentences, y]
 
 def batch_iter(data, batch_size, num_epochs, shuffle=True):
