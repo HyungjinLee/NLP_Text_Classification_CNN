@@ -19,10 +19,10 @@
 
 ## 3. Data Sets
 
-- Training data : 영화 리뷰 데이터 (-) 36420 [rt-polarity.neg](https://github.com/HyungjinLee/NLP_Text_Classification/tree/master/rt-polaritydata)
-                  영화 리뷰 데이터 (+) 38829 [rt-polarity.pos]
+- Training data : 영화 리뷰 데이터 (-) 117030 [rt-polarity.neg](https://github.com/HyungjinLee/NLP_Text_Classification/tree/master/rt-polaritydata)
+                  영화 리뷰 데이터 (+) 48965 [rt-polarity.pos]
 (https://github.com/HyungjinLee/NLP_Text_Classification/tree/master/rt-polaritydata)
-                  총 리뷰 데이터 = 75249 문장
+                  총 리뷰 데이터 = 192279 문장
 
 - Test data : Kaggle 리뷰 데이터 말뭉치 2만 5천 건 (https://www.kaggle.com/iarunava/imdb-movie-reviews-dataset)
 
@@ -30,7 +30,7 @@
 
 ![alt text](https://github.com/MSWon/Sentimental-Analysis/blob/master/pic/pic_2.png "Word2Vec Tensorboard")
 
-1. Sentimental-Analysis 폴더를 github로부터 다운로드
+1. NLP_Text_Classification_CNN 폴더를 github로부터 다운로드
 
 2. **Word2Vec_train.py**로 품사 태깅한 단어들에 대해서 Word2Vec 학습 후 모델 저장 [Word2vec.model](https://drive.google.com/file/d/1Jxf_F_ibneTNRe_4glcWTYmj0TgLh8fP/view?usp=sharing)
 
