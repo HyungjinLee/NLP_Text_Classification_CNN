@@ -52,7 +52,7 @@
       softmax 함수는 각 입력에 따라 결과값의 합을 1로 만들어 주는 함수이며, 긍정, 부정이 나올 확률 표현에 유용함
       위의 함수 식에서, 음수 값 입력이 들어 오면 결과값에 영향이 거의 없다는 것에 기반하여 softmax 입력으로 들어 가기 전 score가 음수일 경우 무시하는 방법을 취함 
 - eval.py를 통해 test data에 문장 하나에 대해서 성능 확인 (**91.40%**)
-- eval.py에서 training option 설정 : True인 경우 new testset을 학습, False인 경우 직접 입력한 문장에 성능 확인
+- eval.py에서 training option 설정 : True인 경우 new testset을 검사, False인 경우 직접 입력한 문장에 성능 확인
 - eval.py에서 30번째 줄의 NLP_Text_Classification_CNN/runs/"timemarking" 경로를 학습한 모델 경로로 설정해 주어야 함
 
 
