@@ -46,7 +46,7 @@
 
 ## 5. Test
 
-![alt text](https://github.com/MSWon/Sentimental-Analysis/blob/master/pic/pic_3.png "Result table")
+![softmax](./softmax.png)
 
 - Bi_LSTM_test.py를 통해 test data에 대해서 성능 확인 (**86.52%**)
 
