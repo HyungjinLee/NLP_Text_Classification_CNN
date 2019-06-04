@@ -55,7 +55,8 @@
 - eval.kaggle-data.py를 통해 말 뭉치 전체에 대해서 성능 확인
 
 
-![alt text](https://github.com/MSWon/Sentimental-Analysis/blob/master/pic/pic_5.png "Result")
+![alt text](./pics/result.png)
 
 
 - eval.py에서 training option 설정 : True인 경우 new testset을 학습, False인 경우 직접 입력한 문장에 성능 확인
+- eval.py에서 30번째 줄의 NLP_Text_Classification_CNN/runs/"timemarking" 경로를 학습한 모델 경로로 설정해 주어야 함
