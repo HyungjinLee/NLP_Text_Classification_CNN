@@ -69,6 +69,7 @@ def load_data_and_labels_kaggle(test_data_file):
     for review in test_examples["review"]:
         tmpstr = KaggleWord2VecUtility.review_to_corpus(review, remove_stopwords=False)
         sentences.append(tmpstr)
+<<<<<<< HEAD
     
     print("preprocessing complete")
     return [sentences, y]
@@ -98,6 +99,8 @@ def load_data_and_labels_kaggle2(test_data_file):
     for review in test_examples["review"]:
         tmpstr = KaggleWord2VecUtility.review_to_corpus(review, remove_stopwords=False)
         sentences.append(tmpstr)
+=======
+>>>>>>> 1aedca2954e328bef692d8e5700c94088fdfc225
     
     print("preprocessing complete")
     return [sentences, y]

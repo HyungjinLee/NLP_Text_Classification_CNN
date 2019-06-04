@@ -21,8 +21,13 @@ tf.flags.DEFINE_string("test_data_file", "data/labeledTrainData.tsv", "Data sour
 
 # Eval Parameters
 tf.flags.DEFINE_integer("batch_size", 64, "Batch Size (default: 64)")
+<<<<<<< HEAD
 tf.flags.DEFINE_string("checkpoint_dir", "runs/1559222525/checkpoints", "Checkpoint directory from training run")
 tf.flags.DEFINE_boolean("eval_train", True, "Evaluate on all training data")
+=======
+tf.flags.DEFINE_string("checkpoint_dir", "runs/1559141057/checkpoints", "Checkpoint directory from training run")
+tf.flags.DEFINE_boolean("eval_train", False, "Evaluate on all training data")
+>>>>>>> 1aedca2954e328bef692d8e5700c94088fdfc225
 
 # Misc Parameters
 tf.flags.DEFINE_boolean("allow_soft_placement", True, "Allow device soft device placement")
@@ -120,11 +125,19 @@ for x in x_raw : # 전체 말뭉치에서 검사
         prediction ,score = evalu(tmplist) # 각 문장 별로 prediction과 score 도출
         scorelist.append(score) # score 리스트에 추가
        
+<<<<<<< HEAD
         if score[0] < 0.0 and score[1] > 0.0:
             score[0] = 0.0 # softmax 함수 공식에 의해 음수는 영향이 아주 적으므로 무시 
         if score[0] > 0.0 and score[1] < 0.0 :
             score[1] = 0.0 # softmax 함수 공식에 의해 음수는 영향이 아주 적으므로 무시
         
+=======
+        if score[0] < 0.0 :
+            score[0] = 0.0 # softmax 함수 공식에 의해 음수는 영향이 아주 적으므로 무시 
+        if score[1] < 0.0 :
+            score[1] = 0.0 # softmax 함수 공식에 의해 음수는 영향이 아주 적으므로 무시
+            
+>>>>>>> 1aedca2954e328bef692d8e5700c94088fdfc225
         np.add(softmax_score, score, out=softmax_score) # softmax score를 구함
         predictlist.append(prediction) # predict 리스트에 추가
         
