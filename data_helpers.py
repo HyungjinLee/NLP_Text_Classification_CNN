@@ -1,7 +1,7 @@
 import numpy as np
 import re
 import pandas as pd
-from KaggleWord2VecUtility import KaggleWord2VecUtility
+import KaggleWord2VecUtility
 
 
 def clean_str(string):
