@@ -30,7 +30,7 @@
 
 ## 4. Training
 
-![alt text](https://github.com/MSWon/Sentimental-Analysis/blob/master/pic/pic_2.png "Word2Vec Tensorboard")
+![training](./pics/training.PNG)
 
 
 1. NLP_Text_Classification_CNN 폴더를 github로부터 다운로드
