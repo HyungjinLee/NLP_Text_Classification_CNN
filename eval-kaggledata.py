@@ -17,7 +17,7 @@ from KaggleWord2VecUtility import KaggleWord2VecUtility
 tf.app.flags.DEFINE_string('f', '', 'kernel')
 
 # Data Parameters
-tf.flags.DEFINE_string("test_data_file", "../data/labeledTrainData.tsv", "Data source for the test data.")
+tf.flags.DEFINE_string("test_data_file", "data/labeledTrainData.tsv", "Data source for the test data.")
 
 # Eval Parameters
 tf.flags.DEFINE_integer("batch_size", 64, "Batch Size (default: 64)")
