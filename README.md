@@ -12,6 +12,8 @@
 
 3. 표현된 단어들과 정답 레이블(0 : negative, 1 : positive) 을 **CNN**에 넣어서 양쪽 끝 state들에 대해서 **fully connected layer**와 **Softmax**함수를 이용해 분류
 
+
+
 ## 2. Requirement
 - [BeautifulSoup 4](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 - [nltk](https://datascienceschool.net/view-notebook/118731eec74b4ad3bdd2f89bab077e1b/)
@@ -22,7 +24,7 @@
 - Training data : 영화 리뷰 데이터 (-) 117030 [rt-polarity.neg](https://github.com/HyungjinLee/NLP_Text_Classification/tree/master/rt-polaritydata)
                   영화 리뷰 데이터 (+) 48965 [rt-polarity.pos]
 (https://github.com/HyungjinLee/NLP_Text_Classification/tree/master/rt-polaritydata)
-                  총 리뷰 데이터 = 192279 문장
+                  총 리뷰 데이터 = 165995 문장
 
 - Test data : Kaggle 리뷰 데이터 말뭉치 2만 5천 건 (https://www.kaggle.com/iarunava/imdb-movie-reviews-dataset)
 
@@ -30,15 +32,15 @@
 
 ![alt text](https://github.com/MSWon/Sentimental-Analysis/blob/master/pic/pic_2.png "Word2Vec Tensorboard")
 
+
 1. NLP_Text_Classification_CNN 폴더를 github로부터 다운로드
 
-2. **Word2Vec_train.py**로 품사 태깅한 단어들에 대해서 Word2Vec 학습 후 모델 저장 [Word2vec.model](https://drive.google.com/file/d/1Jxf_F_ibneTNRe_4glcWTYmj0TgLh8fP/view?usp=sharing)
+2. NLP_Text_Classification_CNN/runs 폴더 생성 필수!!
+이 곳에 트레이닝 된 모델이 저장됨
 
-3. **Word2Vec_Tensorboard.py**를 통해 시각화
+3. **train.py**로 17만 개의 문장을 각각 전처리 한 단어들에 대해서 CNN 모델 학습 후 모델 저장 (경로 : NLP_Text_Classification_CNN/runs/"timemarking"/checkpoint)
 
-4. cmd창에 cd ./Sentimental-Analysis-master/Sentimental-Analysis-master/Bidirectional_LSTM 경로로 이동
-
-5. **python Bi_LSTM_train.py** 명령어를 통해 이진 분류기 학습
+4. **Tensorboard**를 통해 학습 과정 & 결과 시각화 (경로 : NLP_Text_Classification_CNN/runs/"timemarking"/summary/train)
 
 ![alt text](https://github.com/MSWon/Sentimental-Analysis/blob/master/pic/pic_4.png "Accuracy graph")
 
@@ -47,10 +49,10 @@
 ## 5. Test
 
 ![softmax](./softmax.png)
-
-- Bi_LSTM_test.py를 통해 test data에 대해서 성능 확인 (**86.52%**)
-
-- Doc2Vec, Term-existance Naive Bayes에 의한 성능 보다 뛰어남([박은정](https://www.slideshare.net/lucypark/nltk-gensim))
+      softmax 함수는 각 입력에 따라 결과값의 합을 1로 만들어 주는 함수이며, 긍정, 부정이 나올 확률 표현에 유용함
+      위의 함수 식에서, 음수 값 입력이 들어 오면 결과값에 영향이 거의 없다는 것에 기반하여 softmax 입력으로 들어 가기 전 score가 음수일 경우 무시하는 방법을 취함 
+- eval.py를 통해 test data에 문장 하나에 대해서 성능 확인 (**91.40%**)
+- eval.kaggle-data.py를 통해 말 뭉치 전체에 대해서 성능 확인
 
 
 ![alt text](https://github.com/MSWon/Sentimental-Analysis/blob/master/pic/pic_5.png "Result")
