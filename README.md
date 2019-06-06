@@ -33,7 +33,7 @@ ex) sentence : I ate an nice apple yesterday. 1
     chunk3 : I ate nice apple 1
 
 
-![tokens](./pics/tokens.PNG)
+![tokens](./pics/tokens.png)
 
 - Training data : 영화 리뷰 데이터 (-) 117030 [rt-polarity.neg](https://github.com/HyungjinLee/NLP_Text_Classification/tree/master/rt-polaritydata)
                   영화 리뷰 데이터 (+) 48965 [rt-polarity.pos]
@@ -57,7 +57,7 @@ ex) sentence : I ate an nice apple yesterday. 1
 
 ** Training Accuracy & Loss ** 
 
-![accuracy](./pics/accuracy.PNG "Accuracy graph") ![loss](./pics/loss.PNG "Loss graph")
+![accuracy](./pics/accuracy.png "Accuracy graph") ![loss](./pics/loss.png "Loss graph")
 
    **9000번의 training step에서 뚜렷한 overfitting은 관찰되지 않음**
    
@@ -71,7 +71,7 @@ ex) sentence : I ate an nice apple yesterday. 1
 - eval.py에서 30번째 줄의 NLP_Text_Classification_CNN/runs/"timemarking" 경로를 학습한 모델 경로로 설정해 주어야 함
 
 
-![alt text](./pics/result.PNG)
+![alt text](./pics/result.png)
 
 - eval.kaggle-data.py를 통해 말 뭉치 전체에 대해서 성능 확인(**67.95%**)
 - 부정에 편향된 불균등한 데이터 셋 개수(3 : 1), 모호성 극복의 어려움 등의 원인으로 한 문장에 비해 말 뭉치 전체에 대해서는 정확성이 현저히 떨어짐
